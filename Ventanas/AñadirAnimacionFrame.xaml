@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpriteSheetBuilder.Ventanas"
         mc:Ignorable="d"
-        Title="AñadirAnimacionFrame" Height="227.511" Width="315.596" KeyDown="Window_KeyDown">
+        Title="AñadirAnimacionFrame" Height="227.511" Width="315.596" KeyDown="Window_KeyDown" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label x:Name="lblId" Content="Id" HorizontalAlignment="Left" Margin="11,23,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbxId" HorizontalAlignment="Left" Height="23" Margin="91,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TbxId_TextChanged" GotFocus="TextBoxSelectAll_GotFocus"/>

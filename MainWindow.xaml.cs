@@ -67,6 +67,8 @@ namespace SpriteSheetBuilder
             //btnAñadirSecAbajo.IsEnabled = true;
 
             btnAñadirFrame.IsEnabled = true;
+            btnCargar.IsEnabled = true;
+            btnGuardar.IsEnabled = true;
 
             imgTextura.Source = bitmapDecoder.Frames[0];// BitmapImage(new Uri(ofd.FileName, UriKind.Absolute));
         }

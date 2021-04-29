@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpriteSheetBuilder.Ventanas"
         mc:Ignorable="d"
-        Title="IncrementarFrame" Height="227" Width="303.5" KeyDown="Window_KeyDown">
+        Title="IncrementarFrame" Height="227" Width="303.5" KeyDown="Window_KeyDown" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <TextBox x:Name="tbxX" HorizontalAlignment="Left" Height="24" Margin="111,34,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="TbxX_TextChanged"/>
         <TextBox x:Name="tbxY" HorizontalAlignment="Left" Height="24" Margin="111,63,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="TbxY_TextChanged"/>

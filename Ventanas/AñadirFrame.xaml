@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpriteSheetBuilder.Ventanas"
         mc:Ignorable="d"
-        Title="AñadirFrame" Height="242" Width="314" KeyDown="Window_KeyDown" Loaded="Window_Loaded">
+        Title="AñadirFrame" Height="242" Width="314" KeyDown="Window_KeyDown" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="lblX" Content="Posición X" HorizontalAlignment="Left" Margin="35,36,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbxX" HorizontalAlignment="Left" Height="23" Margin="115,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" PreviewTextInput="TbxPreviewTextInput" TextChanged="TbxTextChanged" GotFocus="TextBoxSelectAll_GotFocus"/>
