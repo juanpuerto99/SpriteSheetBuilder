@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Engine="Engine">
+  <Asset Type="Engine:AnimationSerialize">
+    <SpritesList Type="Engine:SpriteSheetData1">
+      <Sprites>0 0 100 100 100 0 100 100 200 0 100 100 300 0 100 100 400 0 100 100</Sprites>
+    </SpritesList>
+    <Animations>
+      <Animation Type="Engine:AnimationData1">
+        <Name>Piola</Name>
+        <Frames>
+          <Frame>
+            <Speed>100</Speed>
+            <FrameId>1</FrameId>
+          </Frame>
+          <Frame>
+            <Speed>100</Speed>
+            <FrameId>2</FrameId>
+          </Frame>
+          <Frame>
+            <Speed>100</Speed>
+            <FrameId>3</FrameId>
+          </Frame>
+        </Frames>
+      </Animation>
+    </Animations>
+  </Asset>
+</XnaContent>

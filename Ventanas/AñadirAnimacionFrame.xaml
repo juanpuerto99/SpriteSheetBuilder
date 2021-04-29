@@ -1,0 +1,18 @@
+﻿<Window x:Class="SpriteSheetBuilder.Ventanas.AñadirAnimacionFrame"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpriteSheetBuilder.Ventanas"
+        mc:Ignorable="d"
+        Title="AñadirAnimacionFrame" Height="227.511" Width="315.596" KeyDown="Window_KeyDown">
+    <Grid>
+        <Label x:Name="lblId" Content="Id" HorizontalAlignment="Left" Margin="11,23,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbxId" HorizontalAlignment="Left" Height="23" Margin="91,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TbxId_TextChanged" GotFocus="TextBoxSelectAll_GotFocus"/>
+        <Label x:Name="lblDuracion" Content="Duracion" HorizontalAlignment="Left" Margin="11,66,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbxDuracion" HorizontalAlignment="Left" Height="23" Margin="91,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TbxDuracion_TextChanged" GotFocus="TextBoxSelectAll_GotFocus"/>
+        <Button x:Name="btnAceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="202,140,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="BtnAceptar_Click"/>
+        <Label x:Name="lblDurationFrames" Content="0" HorizontalAlignment="Left" Margin="228,68,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

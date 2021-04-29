@@ -1,0 +1,25 @@
+﻿<Window x:Class="SpriteSheetBuilder.Ventanas.IncrementarFrame"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpriteSheetBuilder.Ventanas"
+        mc:Ignorable="d"
+        Title="IncrementarFrame" Height="227" Width="303.5" KeyDown="Window_KeyDown">
+    <Grid>
+        <TextBox x:Name="tbxX" HorizontalAlignment="Left" Height="24" Margin="111,34,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="TbxX_TextChanged"/>
+        <TextBox x:Name="tbxY" HorizontalAlignment="Left" Height="24" Margin="111,63,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="TbxY_TextChanged"/>
+        <TextBox x:Name="tbxWidth" HorizontalAlignment="Left" Height="24" Margin="111,92,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="TbxWidth_TextChanged"/>
+        <TextBox x:Name="tbxHeight" HorizontalAlignment="Left" Height="24" Margin="111,121,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="TbxHeight_TextChanged"/>
+        <Label x:Name="lblPosX" Content="Position X" HorizontalAlignment="Left" Margin="13,34,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblPosY" Content="Position Y" HorizontalAlignment="Left" Margin="13,63,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblWidth" Content="Width" HorizontalAlignment="Left" Margin="13,92,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblHeight" Content="Height" HorizontalAlignment="Left" Margin="13,117,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTitulo" Content="Incrementar / Decrementar" HorizontalAlignment="Left" Margin="66,3,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnAceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="211,161,0,0" VerticalAlignment="Top" Width="75" Click="BtnAceptar_Click"/>
+        <Label x:Name="lblPosXFinal" Content="0" HorizontalAlignment="Left" Margin="248,34,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblPosYFinal" Content="0" HorizontalAlignment="Left" Margin="248,63,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblWidthFinal" Content="0" HorizontalAlignment="Left" Margin="248,92,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblHeightFinal" Content="0" HorizontalAlignment="Left" Margin="248,117,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
