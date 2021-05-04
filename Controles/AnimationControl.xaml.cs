@@ -28,6 +28,17 @@ namespace SpriteSheetBuilder.Controles
         List<uint> selectedFramesIds = new List<uint>();
         List<AnimationFrameControl> animations = new List<AnimationFrameControl>();
 
+        public List<uint> SelectedFrameId
+        {
+            get
+            {
+                List<uint> selecteds = new List<uint>();
+                for(int i = 0; i < lbxAnimations.SelectedItems.Count; i++)
+                    selecteds.Add((lbxAnimations.SelectedItems[i] as AnimationFrameControl).SettedFrameId);
+                return selecteds;
+            }
+        }
+
         private int AnimationFrameHeight = 36;
         private int AnimationExtraeHeight = 40;
         private int baseHeight = 150;
@@ -77,11 +88,15 @@ namespace SpriteSheetBuilder.Controles
         private void Expander_Expanded(object sender, RoutedEventArgs e)
         {
             UpdateControlSize();
+            btnSubirFrame.IsEnabled = true;
+            btnBajarFrame.IsEnabled = true;
         }
         //Collapsar
         private void Expander_Collapsed(object sender, RoutedEventArgs e)
         {
             UpdateControlSize();
+            btnSubirFrame.IsEnabled = false;
+            btnBajarFrame.IsEnabled = false;
         }
 
         //Actualizar Tamaños

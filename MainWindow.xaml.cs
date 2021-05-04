@@ -340,6 +340,7 @@ namespace SpriteSheetBuilder
         private Dictionary<int, Label> frameLabels = new Dictionary<int, Label>();
         private SolidColorBrush labelColorNoSel = new SolidColorBrush(new Color() { R = 255, G = 0, B = 0, A = 50 });
         private SolidColorBrush labelColorSel = new SolidColorBrush(new Color() { R = 255, G = 0, B = 0, A = 150 });
+        private SolidColorBrush labelColorAnimSel = new SolidColorBrush(new Color() { R = 0, G = 0, B = 255, A = 150 });
         private SolidColorBrush labelBorderSelAnim = new SolidColorBrush(new Color() { R = 0, G = 0, B = 255, A = 255 });
         private SolidColorBrush labelBorderNoSel = new SolidColorBrush(new Color() { R = 255, G = 0, B = 0, A = 255 });
         private SolidColorBrush labelTextColor = new SolidColorBrush(new Color() { R = 255, G = 255, B = 255, A = 255 });
@@ -391,9 +392,11 @@ namespace SpriteSheetBuilder
         {
             bool frameSelected = General.SelectedFramesId.Contains((uint)id);
             bool animationSelected = General.SelectedAnimationFramesId.Contains((uint)id);
+            bool animationFrameSelected = General.SelectedAnimationSelectedFramesId.Contains((uint)id);
 
             //Background
-            if (frameSelected) frameLabels[id].Background = labelColorSel;
+            if (animationFrameSelected) frameLabels[id].Background = labelColorAnimSel;
+            else if (frameSelected) frameLabels[id].Background = labelColorSel;
             else frameLabels[id].Background = labelColorNoSel;
 
             //Border
@@ -413,7 +416,6 @@ namespace SpriteSheetBuilder
             }
         }
         #endregion
-
         #region ANIMACIONES
         //Crear Animacion
         private void CreateAnimation(string name, List<AnimationFrameControl> afc)
@@ -454,7 +456,7 @@ namespace SpriteSheetBuilder
 
             General.SelectedAnimationFramesId.Clear();
 
-            if(animationControl != null)
+            if (animationControl != null)
             {
                 for (int i = 0; i < animationControl.lbxAnimations.Items.Count; i++)
                     General.SelectedAnimationFramesId.Add((animationControl.lbxAnimations.Items[i] as AnimationFrameControl).SettedFrameId);
@@ -463,6 +465,7 @@ namespace SpriteSheetBuilder
                 else btnEliminarAnimacion.IsEnabled = false;
             }
 
+            General.SelectedAnimationSelectedFramesId = animationControl.SelectedFrameId;
             for (int i = 0; i < General.FramesCount; i++) UpdateLabelColor(i);
         }
         //Frames de Animacion cambiados
@@ -475,8 +478,8 @@ namespace SpriteSheetBuilder
                 for (int i = 0; i < ac.lbxAnimations.Items.Count; i++)
                     General.SelectedAnimationFramesId.Add((ac.lbxAnimations.Items[i] as AnimationFrameControl).SettedFrameId);
 
-                for (int i = 0; i < General.FramesCount; i++)
-                    UpdateLabelColor(i);
+                General.SelectedAnimationSelectedFramesId = ac.SelectedFrameId;
+                for (int i = 0; i < General.FramesCount; i++) UpdateLabelColor(i);
             }
         }
         //Scroll

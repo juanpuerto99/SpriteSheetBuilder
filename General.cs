@@ -18,6 +18,7 @@ namespace SpriteSheetBuilder
 
         public static List<Controles.AnimationControl> Animations = new List<Controles.AnimationControl>();
         public static List<uint> SelectedAnimationFramesId = new List<uint>();
+        public static List<uint> SelectedAnimationSelectedFramesId = new List<uint>();
         public static int SelectedAnimation = -1;
 
         public static List<string> GetAnimationsNames()

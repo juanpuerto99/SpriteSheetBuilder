@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="IncrementarFrame" Height="227" Width="303.5" KeyDown="Window_KeyDown" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <TextBox x:Name="tbxX" HorizontalAlignment="Left" Height="24" Margin="111,34,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="TbxX_TextChanged"/>
-        <TextBox x:Name="tbxY" HorizontalAlignment="Left" Height="24" Margin="111,63,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="TbxY_TextChanged"/>
-        <TextBox x:Name="tbxWidth" HorizontalAlignment="Left" Height="24" Margin="111,92,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="TbxWidth_TextChanged"/>
-        <TextBox x:Name="tbxHeight" HorizontalAlignment="Left" Height="24" Margin="111,121,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="TbxHeight_TextChanged"/>
+        <TextBox x:Name="tbxX" HorizontalAlignment="Left" Height="24" Margin="111,34,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="TbxX_TextChanged" GotFocus="TextBoxSelectAll_GotFocus"/>
+        <TextBox x:Name="tbxY" HorizontalAlignment="Left" Height="24" Margin="111,63,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="TbxY_TextChanged" GotFocus="TextBoxSelectAll_GotFocus"/>
+        <TextBox x:Name="tbxWidth" HorizontalAlignment="Left" Height="24" Margin="111,92,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="TbxWidth_TextChanged" GotFocus="TextBoxSelectAll_GotFocus"/>
+        <TextBox x:Name="tbxHeight" HorizontalAlignment="Left" Height="24" Margin="111,121,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" TextChanged="TbxHeight_TextChanged" GotFocus="TextBoxSelectAll_GotFocus"/>
         <Label x:Name="lblPosX" Content="Position X" HorizontalAlignment="Left" Margin="13,34,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblPosY" Content="Position Y" HorizontalAlignment="Left" Margin="13,63,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblWidth" Content="Width" HorizontalAlignment="Left" Margin="13,92,0,0" VerticalAlignment="Top"/>

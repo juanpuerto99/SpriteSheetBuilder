@@ -24,6 +24,9 @@ namespace SpriteSheetBuilder.Ventanas
         private int widthIncrement = 0;
         private int heightIncrement = 0;
 
+        private bool horizontalCorrect = true;
+        private bool verticalCorrect = true;
+
         private bool enableFinalValues;
         private bool loaded;
 
@@ -67,157 +70,100 @@ namespace SpriteSheetBuilder.Ventanas
         private void TbxX_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!loaded) return;
-
-            int newX = 0;
-            int newW = 0;
-            bool correct = int.TryParse(tbxX.Text, out int x);
-
-            if (correct)
-            {
-                for (int i = 0; i < General.SelectedFramesControls.Count; i++)
-                {
-                    FrameControl fc = General.SelectedFramesControls[i];
-                    newX = (int)fc.SettedX + x;
-                    newW = (int)fc.SettedWidth + widthIncrement;
-                    if (newX + newW > General.ImageWidth || newX < 0)
-                    {
-                        correct = false;
-                        break;
-                    }
-                }
-            }
-
-            if (enableFinalValues)
-                lblPosXFinal.Content = newX;
-
-            if (correct)
-            {
-                xIncrement = x;
-                tbxX.Background = correctColor;
-
-                if (enableFinalValues)
-                    lblPosXFinal.Foreground = correctColor;
-
-                btnAceptar.IsEnabled = true;
-            }
-            else
-            {
-                tbxX.Background = incorrectColor;
-
-                if (enableFinalValues)
-                    lblPosXFinal.Foreground = incorrectColor;
-
-                btnAceptar.IsEnabled = false;
-            }
+            CheckHorizontal();
         }
         private void TbxY_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!loaded) return;
-
-            int newY = 0;
-            int newH = 0;
-            bool correct = int.TryParse(tbxY.Text, out int y);
-
-            if (correct)
-            {
-                for (int i = 0; i < General.SelectedFramesControls.Count; i++)
-                {
-                    FrameControl fc = General.SelectedFramesControls[i];
-                    newY = (int)fc.SettedY + y;
-                    newH = (int)fc.SettedHeight + heightIncrement;
-                    if (newY + newH > General.ImageHeight || newY < 0)
-                    {
-                        correct = false;
-                        break;
-                    }
-                }
-            }
-
-            if (enableFinalValues)
-                lblPosYFinal.Content = newY;
-
-            if (correct)
-            {
-                yIncrement = y;
-                tbxY.Background = correctColor;
-
-                if (enableFinalValues)
-                    lblPosYFinal.Foreground = correctColor;
-
-                btnAceptar.IsEnabled = true;
-            }
-            else
-            {
-                tbxY.Background = incorrectColor;
-
-                if (enableFinalValues)
-                    lblPosYFinal.Foreground = correctColor;
-
-                btnAceptar.IsEnabled = false;
-            }
+            CheckVertical();
         }
         private void TbxWidth_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!loaded) return;
-
-            int newX = 0;
-            int newW = 0;
-            bool correct = int.TryParse(tbxWidth.Text, out int w);
-
-            if (correct)
-            {
-                for (int i = 0; i < General.SelectedFramesControls.Count; i++)
-                {
-                    FrameControl fc = General.SelectedFramesControls[i];
-                    newX = (int)fc.SettedX + xIncrement;
-                    newW = (int)fc.SettedWidth + w;
-                    if (newX + newW > General.ImageWidth || newW <= 0)
-                    {
-                        correct = false;
-                        break;
-                    }
-                }
-            }
-
-            if (enableFinalValues)
-                lblWidthFinal.Content = newW;
-
-            if (correct)
-            {
-                widthIncrement = w;
-                tbxWidth.Background = correctColor;
-
-                if (enableFinalValues)
-                    lblWidthFinal.Foreground = correctColor;
-
-                btnAceptar.IsEnabled = true;
-            }
-            else
-            {
-                tbxWidth.Background = incorrectColor;
-
-                if (enableFinalValues)
-                    lblWidthFinal.Foreground = incorrectColor;
-
-                btnAceptar.IsEnabled = false;
-            }
+            CheckHorizontal();
         }
         private void TbxHeight_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!loaded) return;
+            CheckVertical();
+        }
 
-            int newY = 0;
-            int newH = 0;
-            bool correct = int.TryParse(tbxY.Text, out int h);
+        private void CheckHorizontal()
+        {
+            bool correct = true;
+            int newX = 0;
+            int newW = 0;
+
+            bool incXCorrect = int.TryParse(tbxX.Text, out int incX);
+            bool incWCorrect = int.TryParse(tbxWidth.Text, out int incW);
+
+            for (int i = 0; i < General.SelectedFramesControls.Count; i++)
+            {
+                FrameControl fc = General.SelectedFramesControls[i];
+
+                if (incXCorrect) newX = (int)fc.SettedX + incX;
+                if (incWCorrect) newW = (int)fc.SettedWidth + incW;
+                if (!incXCorrect || !incWCorrect) break;
+                if (newX < 0 || newW <= 0 || newX + newW > General.ImageWidth)
+                {
+                    correct = false;
+                    break;
+                }
+            }
 
             if (correct)
+            {
+                if (incXCorrect) tbxX.Background = correctColor;
+                else tbxX.Background = incorrectColor;
+
+                if (incWCorrect) tbxWidth.Background = correctColor;
+                else tbxWidth.Background = incorrectColor;
+
+                if (enableFinalValues)
+                {
+                    if (incXCorrect) lblPosXFinal.Content = newX;
+                    else lblPosXFinal.Content = "-";
+
+                    if (incWCorrect) lblWidthFinal.Content = newW;
+                    else lblWidthFinal.Content = "-";
+                }
+            }
+            else
+            {
+                tbxX.Background = incorrectColor;
+                tbxWidth.Background = incorrectColor;
+
+                if (enableFinalValues)
+                {
+                    lblPosXFinal.Content = "-";
+                    lblWidthFinal.Content = "-";
+                }
+            }
+
+            if (correct && incXCorrect && incWCorrect) horizontalCorrect = true;
+
+            if (horizontalCorrect && verticalCorrect) btnAceptar.IsEnabled = true;
+            else btnAceptar.IsEnabled = false;
+        }
+        private void CheckVertical()
+        {
+            bool correct = true;
+            int newY = 0;
+            int newH = 0;
+
+            bool incYCorrect = int.TryParse(tbxY.Text, out int incY);
+            bool incHCorrect = int.TryParse(tbxHeight.Text, out int incH);
+
+            if (incYCorrect && incHCorrect)
             {
                 for (int i = 0; i < General.SelectedFramesControls.Count; i++)
                 {
                     FrameControl fc = General.SelectedFramesControls[i];
-                    newY = (int)fc.SettedY + yIncrement;
-                    newH = (int)fc.SettedHeight + h;
-                    if (newY + newH > General.ImageHeight || newH <= 0)
+
+                    if (incYCorrect) newY = (int)fc.SettedY + incY;
+                    if (incHCorrect) newH = (int)fc.SettedHeight + incH;
+                    if (!incYCorrect || !incHCorrect) break;
+                    if (newY < 0 || newH <= 0 || newY + newH > General.ImageHeight)
                     {
                         correct = false;
                         break;
@@ -225,28 +171,39 @@ namespace SpriteSheetBuilder.Ventanas
                 }
             }
 
-            if (enableFinalValues)
-                lblHeightFinal.Content = newH;
-
             if (correct)
             {
-                heightIncrement = h;
-                tbxHeight.Background = correctColor;
+                if (incYCorrect) tbxY.Background = correctColor;
+                else tbxWidth.Background = incorrectColor;
+
+                if (incHCorrect) tbxHeight.Background = correctColor;
+                else tbxHeight.Background = incorrectColor;
 
                 if (enableFinalValues)
-                    lblHeightFinal.Foreground = correctColor;
+                {
+                    if (incYCorrect) lblPosYFinal.Content = newY;
+                    else lblPosYFinal.Content = "-";
 
-                btnAceptar.IsEnabled = true;
+                    if (incHCorrect) lblHeightFinal.Content = newH;
+                    else lblHeightFinal.Content = "-";
+                }
             }
             else
             {
+                tbxY.Background = incorrectColor;
                 tbxHeight.Background = incorrectColor;
 
                 if (enableFinalValues)
-                    lblHeightFinal.Foreground = correctColor;
-
-                btnAceptar.IsEnabled = false;
+                {
+                    lblPosYFinal.Content = "-";
+                    lblHeightFinal.Content = "-";
+                }
             }
+
+            if (correct && incYCorrect && incHCorrect) horizontalCorrect = true;
+
+            if (horizontalCorrect && verticalCorrect) btnAceptar.IsEnabled = true;
+            else btnAceptar.IsEnabled = false;
         }
 
         private void BtnAceptar_Click(object sender, RoutedEventArgs e)
@@ -258,6 +215,11 @@ namespace SpriteSheetBuilder.Ventanas
         {
             if (e.Key == Key.Escape) Close();
             if (e.Key == Key.Enter && btnAceptar.IsEnabled) BtnAceptar_Click(sender, new RoutedEventArgs());
+        }
+        private void TextBoxSelectAll_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            textBox.SelectAll();
         }
     }
 }
